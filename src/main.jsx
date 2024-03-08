@@ -7,6 +7,7 @@ import "../src/assets/style.css"
 import HomePage from './pages/HomePage.jsx'
 import Dummy from './components/Dummy.jsx'
 import AnimeInfo from './pages/AnimeInfo.jsx'
+import WatchAnime from './pages/WatchAnime.jsx'
 
 
 const router = createBrowserRouter([
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "anime-info/:animeId",
         element: <AnimeInfo />
+      },
+      {
+        path: "/watch-anime/:animeId",
+        element: <WatchAnime />
       }
     ]
   }

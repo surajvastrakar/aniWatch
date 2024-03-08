@@ -1,51 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const AnimeInfo = () => {
     const {animeId} = useParams();
 
-    // const {info, setInfo} = useState({});
-    // const {moreInf, setMoreInfo} = useState({});
-
-    const info = {
-        "id": "jujutsu-kaisen-specials-18535",
-        "name": "Jujutsu Kaisen: Specials",
-        "poster": "https://cdn.noitatnemucod.net/thumbnail/300x400/100/78d183cd4fe881d5b656c52053d73c77.jpg",
-        "description": "Specials Jujutsu Kaisen",
-        "stats": {
-            "rating": "R",
-            "quality": "HD",
-            "episodes": {
-                "sub": 2,
-                "dub": null
-            },
-            "type": "Special",
-            "duration": "22m"
-        }
-    };
-
-    const moreInfo = {
-        "japanese": "閑話前編",
-        "aired": "Aug 10, 2023 to Aug 17, 2023",
-        "premiered": "Summer 2023",
-        "duration": "22m",
-        "status": "Finished Airing",
-        "malscore": "8.6",
-        "genres": [
-            "Action",
-            "Adventure",
-            "Fantasy",
-            "Magic",
-            "Shounen"
-        ],
-        "studios": "MAPPA",
-        "producers": [
-            "MAPPA"
-        ]
-    }
+    const [info, setInfo] = useState({});
+    const [moreInfo, setMoreInfo] = useState({});
 
     useEffect(() => {
-        // getAnimeInfo()
+        console.log('mount');
+        getAnimeInfo()
     }, [animeId])
     
     const getAnimeInfo = async() => {
@@ -53,13 +18,14 @@ const AnimeInfo = () => {
         const data = await resp.json();
         const info = data.anime.info
         const moreInfo = data.anime.moreInfo
-        // setInfo(info);
-        // setMoreInfo(moreInfo);
+        setInfo(info);
+        setMoreInfo(moreInfo);
+        console.log(info, 'info');
     }
   return (
-    <div className='flex justify-between bg-slate-400 text-white m-20'>
+    <div className='flex justify-between bg-[#616164] text-white m-20'>
         <div>
-            <img src={info.poster} alt="poster" />
+            <img src={info.poster} alt="poster" className='h-[200px] max-w-[140px]' />
         </div>
         <div className='m-8'> 
             <div>
@@ -75,7 +41,9 @@ const AnimeInfo = () => {
                 <p>{info.stats.duration}</p>
             </div>
             <div className='mt-10'>
-                <button className='mr-5 bg-[#ffdd95] px-4 py-2 border border-[#ffdd95] rounded-full text-black '>Watch Now</button>
+                <Link to={`/watch-anime/${info.id}`}>
+                    <button className='mr-5 bg-[#ffdd95] px-4 py-2 border border-[#ffdd95] rounded-full text-black '>Watch Now</button>
+                </Link>
             </div>
             <div className='my-2'>
                 <p className='my-2'>{info.description}</p>
