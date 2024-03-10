@@ -22,7 +22,6 @@ const getHomePageData = async () => {
 }
   return (
     <div>
-      {/* <Navbar /> */}
       <Spotlight spotlights={spotlights} />
       <Trending trendingData={trendingData}/>
     </div>

@@ -36,20 +36,20 @@ const Navbar = () => {
           onChange={(e) => setSearchQuery(e.target.value)}
         />
         {anime.length ? (
-          <ul className="absolute z-10 w-80 h-80 overflow-y-scroll bg-[#414248] text-[#aaa] text-sm">
+          <ul className="absolute z-10 w-80 h-80 overflow-y-scroll bg-[#414248] text-white text-sm">
             {anime?.map((e) => (
               <Link to={`/anime-info/${e.id}`} key={e.id}>
-                <li className="cursor-pointer py-2 border-b-[1px] border-dashed border-[#5c5d63]">
+                <li className="cursor-pointer hover:text-[#FFDD94] py-2 border-b-[1px] border-dashed border-[#5c5d63]">
                   <div className="flex ps-2">
                     <img src={e.poster} alt="poster" width={50} height={70} />
                     <div className="mx-2 w-60">
-                      <h3 className="font-bold text-base text-white truncate">
+                      <h3 className="font-bold text-base hover:text-[#FFDD94] truncate">
                         {e.name}
                       </h3>
                       <p className="text-[#aaa] truncate">{e.name}</p>
                       <div>
-                        <span>{e.type}</span>
-                        <span className="text-white ml-2">{e.duration}</span>
+                        <span className="">{e.type}</span>
+                        <span className="ml-2">{e.duration}</span>
                       </div>
                     </div>
                   </div>
@@ -61,11 +61,6 @@ const Navbar = () => {
           <div></div>
         )}
       </div>
-      {searchQuery}
-      {/* <p onClick={handleFunc}>Dummy</p> */}
-      <p>
-        <Link to="/dummy">Dummy</Link>
-      </p>
     </div>
   );
 };

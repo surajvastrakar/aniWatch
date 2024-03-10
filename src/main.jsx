@@ -5,9 +5,9 @@ import Layout from "./Layout.jsx";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "../src/assets/style.css";
 import HomePage from "./pages/HomePage.jsx";
-import Dummy from "./components/Dummy.jsx";
 import AnimeInfo from "./pages/AnimeInfo.jsx";
 import WatchAnime from "./pages/WatchAnime.jsx";
+import AnimeContextProvider from "./context/AnimeContextProvider.jsx";
 
 const router = createBrowserRouter([
   {
@@ -17,10 +17,6 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <HomePage />,
-      },
-      {
-        path: "/dummy",
-        element: <Dummy />,
       },
       {
         path: "/anime-info/:animeId",
@@ -37,6 +33,8 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <>
     <App />
-    <RouterProvider router={router} />
+    <AnimeContextProvider>
+      <RouterProvider router={router} />
+    </AnimeContextProvider>
   </>
 );
