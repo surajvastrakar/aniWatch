@@ -4,7 +4,7 @@ const Trending = ({ trendingData }) => {
   return (
     <div className="mt-16">
       <h2 className="text-[#FFDD95] text-2xl font-bold ml-4 mb-12">Trending</h2>
-      <div className="flex gap-6">
+      <div className="flex gap-6 justify-around">
         {trendingData.map((trending) => (
           <div className="flex" key={trending.name}>
             <div className="h-[150px] items-center relative w-9">
@@ -17,7 +17,7 @@ const Trending = ({ trendingData }) => {
                   : trending.name}
               </h3>
               <p className="text-[#FFDD95] text-lg font-bold absolute bottom-0 m-auto">
-                {trending.rank < 9 ? 0 : ""}
+                {trending.rank <= 9 ? 0 : ""}
                 {trending.rank}
               </p>
             </div>

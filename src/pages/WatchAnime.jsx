@@ -14,9 +14,6 @@ const WatchAnime = () => {
 
   const {animeInfo} = useContext(animeContext);
 
-  console.log(animeInfo);
-
-
   useEffect(() => {
     getAnimeEpisodes();
   }, [animeId]);
@@ -30,20 +27,15 @@ const WatchAnime = () => {
     const total = data.totalEpisodes;
     setWatchData(tempData);
     setTotalEpisodes(total);
-    console.log(watchData);
   };
 
   const getWatchLink = async (epId) => {
     setStreamLink(null)
-    console.log(epId, "epId");
     const serverResp = await fetch(`https://api-aniwatch.onrender.com/anime/servers?episodeId=${epId}`);
     const respData = await serverResp.json();
-    console.log(respData, 'respData');
     const server = respData.sub[0].serverName.toString()
-
     const resp = await fetch(`https://api-aniwatch.onrender.com/anime/episode-srcs?id=${epId}&server=vidstreaming&category=dub`);
     const data = await resp.json()
-    console.log(data, 'data');
     setStreamLink(data.sources[0].url)
     setTrackLink(data.track[1].file)
   }
